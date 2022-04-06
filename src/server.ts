@@ -2,6 +2,8 @@ import errorHandler from "errorhandler";
 import app from "./app.js";
 import logger from "./util/winston.js";
 import "dotenv/config";
+import oracledb from "oracledb";
+import db from "./config/db.js";
 
 /**
  * Error Handler. Provides full stack
@@ -20,6 +22,7 @@ if (process.env.PORT) {
 
   try {
     console.log("here");
+    db();
     app.listen(app.get("port"), () => {
       logger.info(
         "  App is running at http://localhost:%d in %s mode",
